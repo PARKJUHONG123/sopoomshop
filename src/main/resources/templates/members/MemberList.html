@@ -14,55 +14,43 @@
 </table>
 <body>
 <script type="text/javascript">
+	var messages = "[[${members}]]";
+	var jsonNessage = messages.replace(/&quot;/g, "\"");
+	jsonfunc(jsonNessage);
 
-let xhttp = new XMLHttpRequest(); // 통신상태정보
+	function jsonfunc( jsonText ) {
+		let arrname = new Array();
+		let arraddress = new Array();
+		let arrphone = new Array();
+		
+		let json = JSON.parse(jsonText);
 
-xhttp.onreadystatechange = function () {    // 요청에 대한 응답 리스너
+		for(i=0; i<json.length; i++){ 
+			arrname[i] = json[i].name;
+			arraddress[i] = json[i].address;
+			arrphone[i] = json[i].phone;
+		}
+		let table = document.getElementById('table');
 
-	if(xhttp.readyState == 4 && xhttp.status == 200){  
-        //reedtstate = 상태 0 수행전 1 로딩중 2 로딩완료 3 서버처리중 4 서버처리완료
-        //status = 200 tjdrhd 403 서버문제 403 없음 500 요청문제
-        // 위 구문이 올바른 요청응답상태
-
-		jsonfunc(this.responseText); // 응답을 받은 XML
+		for(i=0; i<arrname.length; i++){
+			let tr = document.createElement("tr"); // 새로운 tag 추가
+			
+			let td1 = document.createElement("td");			  
+			td1.appendChild(document.createTextNode(arrname[i] + "")); 
+			
+			let td2 = document.createElement("td");			 
+			td2.appendChild(document.createTextNode(arraddress[i] + ""));
+			
+			let td3 = document.createElement("td");			 
+			td3.appendChild(document.createTextNode(arrphone[i]+ "")); // 새tag추가 + tag안 내용추가
+			
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			tr.appendChild(td3);   //컬럼안에 새 tag추가
+			
+			table.appendChild(tr);
+		}
 	}
-}
-xhttp.open("GET","Members.json", true); //  불러올 파일 수정하기 
-xhttp.send();
-
-function jsonfunc( jsonText ) {
-	let arrname = new Array();
-	let arraddress = new Array();
-	let arrphone = new Array();
-	
-	let json = JSON.parse(jsonText);
-
-	for(i=0; i<json.length; i++){ 
-		arrname[i] = json[i].name;
-		arraddress[i] = json[i].address;
-		arrphone[i] = json[i].phone;
-	}
-	let table = document.getElementById('table');
-
-	for(i=0; i<arrname.length; i++){
-		let tr = document.createElement("tr"); // 새로운 tag 추가
-		
-		let td1 = document.createElement("td");			  
-		td1.appendChild(document.createTextNode(arrname[i] + "")); 
-		
-		let td2 = document.createElement("td");			 
-		td2.appendChild(document.createTextNode(arraddress[i] + ""));
-		
-		let td3 = document.createElement("td");			 
-		td3.appendChild(document.createTextNode(arrphone[i]+ "")); // 새tag추가 + tag안 내용추가
-		
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		tr.appendChild(td3);   //컬럼안에 새 tag추가
-		
-		table.appendChild(tr);
-	}
-}
 </script>
 </body>
 </html>
