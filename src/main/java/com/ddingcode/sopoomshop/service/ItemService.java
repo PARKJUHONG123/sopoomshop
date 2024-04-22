@@ -20,7 +20,7 @@ public class ItemService {
     public Item save(Item item) {
         itemRepository.save(item);
 
-        return itemRepository.findById(item.getId())
+        return itemRepository.findById(item.getItemId())
                 .orElseThrow(() -> new IllegalArgumentException("save error"));
     }
 

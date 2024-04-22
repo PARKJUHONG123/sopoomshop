@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
-    private Long id;
+    private Long memberId;
     private String name;
     private String address;
     private String phone;

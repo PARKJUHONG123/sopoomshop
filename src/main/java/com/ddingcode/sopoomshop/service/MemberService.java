@@ -19,8 +19,7 @@ public class MemberService {
     @Transactional
     public Member save(Member member) {
         memberRepository.save(member);
-
-        return memberRepository.findById(member.getId())
+        return memberRepository.findById(member.getMemberId())
                 .orElseThrow(() -> new IllegalArgumentException("save error"));
     }
 

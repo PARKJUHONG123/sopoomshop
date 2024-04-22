@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ddingcode.sopoomshop.mapper.OrderMapper">
 
-    <update id="save" useGeneratedKeys="true" keyProperty="id">
+    <update id="save" useGeneratedKeys="true" keyProperty="orderId">
 
     </update>
 

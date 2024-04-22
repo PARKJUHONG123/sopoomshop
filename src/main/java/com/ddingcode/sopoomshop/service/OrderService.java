@@ -20,7 +20,7 @@ public class OrderService {
     public Order save(Order order) {
         orderRepository.save(order);
 
-        return orderRepository.findById(order.getId())
+        return orderRepository.findById(order.getOrderId())
                 .orElseThrow(() -> new IllegalArgumentException("save error"));
     }
 
