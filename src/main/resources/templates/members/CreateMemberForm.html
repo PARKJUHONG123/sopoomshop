@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원등록</h1>
+    <form action="/members/create-member" method="post" name="Createmember">
+        <p>🤓이름  <input type="text" name="name" placeholder="이름" ></p>
+        <p>💕주소  <input type="text" name="address" placeholder="주소" maxlength="10"></p>
+        <p>📞전화번호  <input type="text" name="phone" placeholder="000-0000-0000" maxlength="13" oninput="autoHyphen(this)"/></p>
+        </script>
+        <div style="line-height:50%;">
+            <br>
+            <br>
+        </div>
+        <div class="button-box">
+    <button type="submit">등록</button>
+        </div>
+    
+    
+    <script>
+        // 전화번호 자동화 정규식 //
+        const autoHyphen = (target) => {
+            target.value = target.value
+            .replace(/[^0-9]/g, '')
+            .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+        };
+
+        // json 형식으로 자료보내기 // 
+        const Createmember = document.querySelector('.form') 
+
+        Createmember.addEventListener('submit', event => {
+            event.preventDefault();
+            const CreateMemberData = new CreateMemberData(Createmember);
+            const data = Object.fromEntries(CreateMemberData);
+
+        fetch("/members/create-member", {
+            method : 'get',
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data),
+        }).then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error))
+    });
+    </script>
+   
+</body>
+</html>
