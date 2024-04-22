@@ -5,15 +5,20 @@
 <mapper namespace="com.ddingcode.sopoomshop.mapper.MemberMapper">
 
     <update id="save" useGeneratedKeys="true" keyProperty="id">
-
+        insert into members(name, address, phone) values(#{name}, #{address}, #{phone})
     </update>
 
     <select id="findById" resultType="Member">
+        select member_id, name, address, phone 
+        from members
+        where member_id = #{member_id}
 
     </select>
 
     <select id="findAll" resultType="Member">
-
+        select member_id, name, address, phone
+        from members
+        
     </select>
     
 </mapper>
