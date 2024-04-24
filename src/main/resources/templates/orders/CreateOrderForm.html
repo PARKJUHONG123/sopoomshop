@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>주문등록</h1>
+    <form action="/orders/create-order" method="post" name="Createorder">
+        <p>주문자  <input type="text" name="oder-name" placeholder="주문자" ></p>
+        <p>상품명  <input type="text" name="item-name" placeholder="상품명" maxlength="10"></p>
+        <p>수량  <input type="number" name="quantity" placeholder="수량" min="1" max="100"/></p>
+        <p>가격  <input type="text" class="result" name="result" ></p>  
+        <div style="line-height:60%;">
+            <br>
+            <br>
+        </div>
+        <div class="button-box">
+            <button type="submit">등록</button>
+        </div>
+    </form>
+    
+    <script>
+
+        // json 형식으로 자료보내기 // 
+        const Createorder = document.querySelector('.form') 
+
+        Createorder.addEventListener('submit', event => {
+            event.preventDefault();
+            const CreateOrerData = new CreateOrderData(Createorder);
+            const data = Object.fromEntries(CreateOrderData);
+
+        fetch("/orders/create-order", {
+            method : 'get',
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data),
+        }).then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error))
+    });
+    </script>
+   
+</body>
+</html>

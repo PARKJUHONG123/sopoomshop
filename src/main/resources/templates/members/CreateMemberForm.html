@@ -8,11 +8,11 @@
 <body>
     <h1>회원등록</h1>
     <form action="/members/create-member" method="post" name="Createmember">
-        <p>🤓이름  <input type="text" name="name" placeholder="이름" ></p>
-        <p>💕주소  <input type="text" name="address" placeholder="주소" maxlength="10"></p>
-        <p>📞전화번호  <input type="text" name="phone" placeholder="000-0000-0000" maxlength="13" oninput="autoHyphen(this)"/></p>
+        <p>이름  <input type="text" name="name" placeholder="이름" minlength="6" ></p>
+        <p>주소  <input type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
+        <p>전화번호  <input type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
         
-        <div style="line-height:50%;">
+        <div style="line-height:60%;">
             <br>
             <br>
         </div>
