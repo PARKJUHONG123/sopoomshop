@@ -40,7 +40,7 @@ public class ItemController {
     @GetMapping("/items")
     public String list(Model model) {
         List<Item> items = itemService.findAll();
-        model.addAttribute("items", items);
+        model.addAttribute("items", JsonTransform.getJsonString(items));
         return "items/itemList";
     }
 

@@ -38,7 +38,7 @@ public class OrderController {
     @GetMapping("/orders")
     public String list(Model model) {
         List<Order> orders = orderService.findAll();
-        model.addAttribute("orders", orders);
+        model.addAttribute("orders", JsonTransform.getJsonString(orders));
         return "orders/orderList";
     }
 

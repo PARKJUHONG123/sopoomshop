@@ -4,7 +4,6 @@ import com.ddingcode.sopoomshop.controller.form.MemberForm;
 import com.ddingcode.sopoomshop.domain.Member;
 import com.ddingcode.sopoomshop.service.MemberService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,6 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping("/members/new")
     public String createForm(Model model) {
@@ -41,9 +39,7 @@ public class MemberController {
     @GetMapping("/members")
     public String list(Model model) throws JsonProcessingException {
         List<Member> members = memberService.findAll();
-        String membersJsonType = objectMapper.writeValueAsString(members);
-        model.addAttribute("members", membersJsonType);
-        log.info("membersJsonType" + membersJsonType);
+        model.addAttribute("members", JsonTransform.getJsonString(members));
         return "members/memberList";
     }
 
