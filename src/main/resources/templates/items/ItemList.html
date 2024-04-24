@@ -20,7 +20,7 @@
 	jsonfunc(jsonMessage); // JSON 을 파싱해서 HTML 로 표현함
 
 	function jsonfunc( jsonText ) {
-		let arritemname = new Array(); // 상품명 배열
+		let arrname = new Array(); // 상품명 배열
 		let arrbuyPrice = new Array(); // 매입가 배열
 		let arrsalePrice = new Array(); // 판매가 배열
 		let arrstock = new Array(); // 재고수량 배열
@@ -31,7 +31,7 @@
 			console.log(i + "번째 데이터");
 			console.log(json[i]);
 
-			arritemname[i] = json[i].itemname;
+			arrname[i] = json[i].name;
 			arrbuyPrice[i] = json[i].buyPrice;
 			arrsalePrice[i] = json[i].salePrice;
 			arrstock[i] = json[i].stock;
@@ -40,11 +40,11 @@
 		// Javscript 로 HTML 속성 추가
 		let table = document.getElementById('table');
 
-		for(i=0; i<arritemname.length; i++){
+		for(i=0; i<arrname.length; i++){
 			let tr = document.createElement("tr"); // 테이블 행
 			
 			let td1 = document.createElement("td"); // 테이블 열을 만듦
-			td1.appendChild(document.createTextNode(arritemname[i] + "")); // 상품 이름 배열을 가져와서 내용을 추가함
+			td1.appendChild(document.createTextNode(arrname[i] + "")); // 상품 이름 배열을 가져와서 내용을 추가함
 			
 			let td2 = document.createElement("td");	// 테이블 열을 만듦
 			td2.appendChild(document.createTextNode(arrbuyPrice[i] + "")); // 매입가 배열을 가져와서 내용을 추가함

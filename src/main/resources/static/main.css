@@ -1,6 +1,6 @@
-.mainbutton{
-    background-color: rgb(150, 214, 235);
-	  color: white;
-	  border: none;
-	  padding: 10px 30px;
+.test1{
+    width: 200px;
+  height: auto;
+  display: inline-block;
+  text-align: center; 
 }
