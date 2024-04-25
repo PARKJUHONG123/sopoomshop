@@ -5,17 +5,18 @@
 <mapper namespace="com.ddingcode.sopoomshop.mapper.ItemMapper">
 
     <update id="save" useGeneratedKeys="true" keyProperty="itemId">
-        insert into items(name, buyPrice, salePrice, stock) values(#{name}, #{buyPrice}, #{salePrice}, #{stock})
+        insert into items(name, buy_price, sale_price, stock)
+        values(#{name}, #{buyPrice}, #{salePrice}, #{stock})
     </update>
 
     <select id="findById" resultType="Item">
-        select item_id, name, buyPrice, salePrice, stock 
+        select item_id, name, buy_price, sale_price, stock
         from items
-        where item_id = #{item_id}
+        where item_id = #{itemId}
     </select>
 
     <select id="findAll" resultType="Item">
-        select item_id, name, buyPrice, salePrice, stock
+        select item_id, name, buy_price, sale_price, stock
         from items
     </select>
 
