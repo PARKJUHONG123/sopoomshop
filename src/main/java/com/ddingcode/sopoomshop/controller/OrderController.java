@@ -32,7 +32,7 @@ public class OrderController {
         return "orders/createOrderForm";
     }
 
-    @PostMapping("/orders/create-member")
+    @PostMapping("/orders/create-order")
     public String create(OrderForm orderForm) {
 
         Order order = Order.createItem(orderForm.getItemId(),
