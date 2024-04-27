@@ -8,10 +8,10 @@
 <body>
     <h1>주문등록</h1>
     <form action="/orders/create-order" method="post" name="Createorder">
-        <p>주문자  <input type="text" name="oder-name" placeholder="주문자" ></p>
-        <p>상품명  <input type="text" name="item-name" placeholder="상품명" maxlength="10"></p>
-        <p>수량  <input type="number" name="quantity" placeholder="수량" min="1" max="100"/></p>
-        <p>가격  <input type="text" class="result" name="result" ></p>  
+        <p>주문자  <input id="orderName" type="text" name="order-name" placeholder="주문자" ></p>
+        <p>상품명  <input id="itemName" type="text" name="item-name" placeholder="상품명" maxlength="10"></p>
+        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100"/></p>
+        <p>가격  <input id="price" type="text" name="price" placeholder="총금액" ></p>  
         <div style="line-height:60%;">
             <br>
             <br>
