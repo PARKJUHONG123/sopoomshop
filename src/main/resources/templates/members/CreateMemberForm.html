@@ -8,16 +8,16 @@
 <body>
     <h1>회원등록</h1>
     <form action="/members/create-member" method="post" name="Createmember">
-        <p>이름  <input type="text" name="name" placeholder="이름" minlength="6" ></p>
-        <p>주소  <input type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
-        <p>전화번호  <input type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
+        <p>이름  <input id="name" type="text" name="name" placeholder="이름" minlength="6" ></p>
+        <p>주소  <input id="address" type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
+        <p>전화번호  <input id="phone" type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
         
         <div style="line-height:60%;">
             <br>
             <br>
         </div>
         <div class="button-box">
-            <button type="submit">등록</button>
+            <button type="button" value="submit" onclick="checkNull()"; >등록</button>
         </div>
     </form>
     
@@ -28,6 +28,19 @@
             .replace(/[^0-9]/g, '')
             .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
         };
+
+        //null 값 제외 조건
+        function checkNull(){
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            if(name == "" || address =="" || phone == "" ) {
+                alert('필수 값을 입력하십시오');
+                return;
+            }
+            document.Createmember.submit();
+        }
 
         // json 형식으로 자료보내기 // 
         const Createmember = document.querySelector('.form') 
