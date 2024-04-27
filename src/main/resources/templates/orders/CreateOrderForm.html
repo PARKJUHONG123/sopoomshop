@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>주문등록</title>  
 </head>
 <body onload="getItemSelectInfo()">
-    <h1>주문등록</h1>
+    <h1>주문등록</h1>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
     <form action="/orders/create-order" method="post" name="Createorder">
         <p>주문자 <select id="memberSelect" name="memberId"></select></p>
 
@@ -16,8 +16,8 @@
             <div>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</div>
         </p>
 
-        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100"/></p>
-        <p>가격  <input id="price" type="text" name="price" placeholder="총금액" ></p>  
+        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total()"/></p>
+        <p>총금액  <span id="price" name="price"> 원</span></p>  
         <div style="line-height:60%;">
             <br>
             <br>
@@ -88,6 +88,13 @@
             document.getElementById('salePrice').innerHTML = objOption.salePrice;
         }
 
+        // 총금액 자동 계산
+        function total(){
+            const salePrice = document.getElementById('salePrice').innerHTML;
+            const quantity = document.getElementById('quantity').value;
+
+            document.getElementById('price').innerHTML = (salePrice * quantity);
+        }
 
         // json 형식으로 데이터가져오기 //
         var messages = "[[${orders}]]";
