@@ -8,9 +8,9 @@
 <body onload="getItemSelectInfo()">
     <h1>주문등록</h1>
     <form action="/orders/create-order" method="post" name="Createorder">
-        <p>주문자 <select id="memberSelect" name="member"></select></p>
+        <p>주문자 <select id="memberSelect" name="memberId"></select></p>
 
-        <p>상품명 <select id="itemSelect" name="item" onchange="getItemSelectInfo()"></select></p>
+        <p>상품명 <select id="itemSelect" name="itemId" onchange="getItemSelectInfo()"></select></p>
         <p>상품정보  
             <div>- 재고 : <span id="stock" name="stock"></span> 개</div>
             <div>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</div>
@@ -95,7 +95,6 @@
 
         jsonfunc(jsonMessage); // JSON 을 파싱해서 HTML 로 표현함
 
-
         function jsonfunc( jsonText ) {
             let arrname = new Array(); // 상품명 배열
             let arrsalePrice = new Array(); // 판매가 배열
@@ -111,9 +110,7 @@
                 arrsalePrice[i] = json[i].salePrice;
                 arrstock[i] = json[i].stock;
             }
-
         }
-
 
 
         // json 형식으로 자료보내기 // 
@@ -121,18 +118,18 @@
 
         Createorder.addEventListener('submit', event => {
             event.preventDefault();
-            const CreateOrerData = new CreateOrderData(Createorder);
+            const CreateOrderData = new CreateOrderData(Createorder);
             const data = Object.fromEntries(CreateOrderData);
-
-        fetch("/orders/create-order", {
-            method : 'get',
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify(data),
-        }).then(res => res.json())
-          .then(data => console.log(data))
-          .catch(error => console.log(error))
+            fetch("/orders/create-order", {
+                method : 'post',
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data),
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
     });
     </script>
    
