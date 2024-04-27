@@ -1,7 +1,10 @@
 package com.ddingcode.sopoomshop.controller;
 
 import com.ddingcode.sopoomshop.controller.form.OrderForm;
+import com.ddingcode.sopoomshop.domain.Member;
 import com.ddingcode.sopoomshop.domain.Order;
+import com.ddingcode.sopoomshop.service.ItemService;
+import com.ddingcode.sopoomshop.service.MemberService;
 import com.ddingcode.sopoomshop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,10 +21,14 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+    private final MemberService memberService;
+    private final ItemService itemService;
 
     @GetMapping("/orders/new")
     public String createForm(Model model) {
         model.addAttribute("form", new OrderForm());
+        model.addAttribute("members", JsonTransform.getJsonString(memberService.findAll()));
+        model.addAttribute("items", JsonTransform.getJsonString(itemService.findAll()));
         return "orders/createOrderForm";
     }
 
