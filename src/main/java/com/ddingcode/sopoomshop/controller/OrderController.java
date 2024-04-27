@@ -22,7 +22,7 @@ public class OrderController {
     @GetMapping("/orders/new")
     public String createForm(Model model) {
         model.addAttribute("form", new OrderForm());
-        return "members/createOrderForm";
+        return "orders/createOrderForm";
     }
 
     @PostMapping("/orders/create-member")
