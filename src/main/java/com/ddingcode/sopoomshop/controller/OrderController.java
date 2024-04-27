@@ -1,8 +1,8 @@
 package com.ddingcode.sopoomshop.controller;
 
 import com.ddingcode.sopoomshop.controller.form.OrderForm;
-import com.ddingcode.sopoomshop.domain.Member;
 import com.ddingcode.sopoomshop.domain.Order;
+import com.ddingcode.sopoomshop.domain.dto.OrderResultDto;
 import com.ddingcode.sopoomshop.service.ItemService;
 import com.ddingcode.sopoomshop.service.MemberService;
 import com.ddingcode.sopoomshop.service.OrderService;
@@ -44,7 +44,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     public String list(Model model) {
-        List<Order> orders = orderService.findAll();
+        List<OrderResultDto> orders = orderService.findAll();
         model.addAttribute("orders", JsonTransform.getJsonString(orders));
         return "orders/orderList";
     }

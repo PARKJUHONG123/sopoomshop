@@ -1,6 +1,7 @@
 package com.ddingcode.sopoomshop.repository;
 
 import com.ddingcode.sopoomshop.domain.Order;
+import com.ddingcode.sopoomshop.domain.dto.OrderResultDto;
 import com.ddingcode.sopoomshop.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class OrderRepository {
         return orderMapper.findById(id);
     }
 
-    public List<Order> findAll() {
+    public List<OrderResultDto> findAll() {
         return orderMapper.findAll();
     }
 

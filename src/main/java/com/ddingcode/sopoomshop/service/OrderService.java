@@ -1,6 +1,7 @@
 package com.ddingcode.sopoomshop.service;
 
 import com.ddingcode.sopoomshop.domain.Order;
+import com.ddingcode.sopoomshop.domain.dto.OrderResultDto;
 import com.ddingcode.sopoomshop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-    public List<Order> findAll() {
+    public List<OrderResultDto> findAll() {
         return orderRepository.findAll();
     }
 
