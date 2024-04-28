@@ -5,19 +5,22 @@
 <mapper namespace="com.ddingcode.sopoomshop.mapper.OrderMapper">
 
     <update id="save" useGeneratedKeys="true" keyProperty="orderId">
-    insert into orders(member_id, item_id, quantity, total)
-    values(#{orderName}, #{itemName}, #{quantity}, #{total})
+    insert into orders(member_id, item_id, quantity)
+    values(#{orderName}, #{itemName}, #{quantity})
     </update>
 
     <select id="findById" resultType="Order">
-    select  order_id, member_id, item_id, quantity, total
+    select  order_id, member_id, item_id, quantity
     from orders
     where order_id = #{order_Id}
     </select>
 
+
     <select id="findAll" resultType="Order">
-    select order_id, member_id, item_id, quantity, total
-    from orders
+    select order_id, member_id, item_id, quantity, (b.quantity*a.pricet) as total
+    from items a
+        inner join orders b
+        on a.item_id = b.item_id
+    where a.item_id = b.item_id
     </select>
-    
 </mapper>
