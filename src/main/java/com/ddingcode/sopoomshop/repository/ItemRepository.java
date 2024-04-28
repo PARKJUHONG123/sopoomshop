@@ -1,6 +1,7 @@
 package com.ddingcode.sopoomshop.repository;
 
 import com.ddingcode.sopoomshop.domain.Item;
+import com.ddingcode.sopoomshop.domain.Order;
 import com.ddingcode.sopoomshop.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,10 @@ public class ItemRepository {
 
     public List<Item> findAll() {
         return itemMapper.findAll();
+    }
+
+    public int updateStockByOrder(Order order) {
+        return itemMapper.updateStock(order);
     }
 
 }

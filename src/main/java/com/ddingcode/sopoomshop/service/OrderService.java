@@ -2,6 +2,7 @@ package com.ddingcode.sopoomshop.service;
 
 import com.ddingcode.sopoomshop.domain.Order;
 import com.ddingcode.sopoomshop.domain.dto.OrderResultDto;
+import com.ddingcode.sopoomshop.repository.ItemRepository;
 import com.ddingcode.sopoomshop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,14 @@ import java.util.Optional;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final ItemRepository itemRepository;
 
     @Transactional
     public Order save(Order order) {
-        orderRepository.save(order);
+        int updateCnt = itemRepository.updateStockByOrder(order); // 재고 변경 추가
+        if (updateCnt > 0) {
+            orderRepository.save(order);
+        }
 
         return orderRepository.findById(order.getOrderId())
                 .orElseThrow(() -> new IllegalArgumentException("save error"));
