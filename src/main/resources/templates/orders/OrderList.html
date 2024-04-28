@@ -6,10 +6,10 @@
     <title> 주문조회</title> 
 </head>
 
-<h2> 주문내역</h2>  <button id="button-box1" type="button" onclick="location.href='/main'">메인화면</button>
+<h2> 주문내역</h2>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
 <table id="table" border="1" style="width: 40%"  cellpadding="5" rules="rows">
 <tr>
-    <th>주문자</th><th>상품명</th><th>수량</th><th>총금액</th>
+    <th>주문자</th><th>상품명</th><th>판매가</th><th>수량</th><th>총금액</th>
 </tr>
 </table>
 <body>
@@ -20,8 +20,9 @@
 	jsonfunc(jsonMessage); // JSON 을 파싱해서 HTML 로 표현함
 
 	function jsonfunc( jsonText ) {
-		let arrorderName = new Array(); // 주문자 배열
+		let arrmemberName = new Array(); // 주문자 배열
 		let arrritemName = new Array(); // 상품명 배열
+		let arrsalePrice = new Array(); // 판매가 배열
 		let arrquantity = new Array(); // 수량 배열
 		let arrtotal = new Array(); // 총금액 배열
 
@@ -31,8 +32,9 @@
 			console.log(i + "번째 데이터");
 			console.log(json[i]);
 
-			arrorderName[i] = json[i].orderName;
+			arrmemberName[i] = json[i].memberName;
 			arrritemName[i] = json[i].itemName;
+			arrsalePrice[i] = json[i].salePrice
 			arrquantity[i] = json[i].quantity;
 			arrtotal[i] = json[i].total;
 		}
@@ -40,25 +42,29 @@
 		// Javscript 로 HTML 속성 추가
 		let table = document.getElementById('table');
 
-		for(i=0; i<arrorderName.length; i++){
+		for(i=0; i<arrmemberName.length; i++){
 			let tr = document.createElement("tr"); // 테이블 행
 			
 			let td1 = document.createElement("td"); // 테이블 열을 만듦
-			td1.appendChild(document.createTextNode(arrorderName[i] + "")); //  주문자 배열을 가져와서 내용을 추가함
+			td1.appendChild(document.createTextNode(arrmemberName[i] + "")); //  주문자 배열을 가져와서 내용을 추가함
 			
 			let td2 = document.createElement("td");	// 테이블 열을 만듦
 			td2.appendChild(document.createTextNode(arrritemName[i] + "")); // 상품명 배열을 가져와서 내용을 추가함
 			
 			let td3 = document.createElement("td");	// 테이블 열을 만듦
-			td3.appendChild(document.createTextNode(arrquantity[i]+ "")); // 수량 배열을 가져와서 내용을 추가함
+			td3.appendChild(document.createTextNode(arrsalePrice[i]+ "")); // 수량 배열을 가져와서 내용을 추가함
 			
 			let td4 = document.createElement("td");	// 테이블 열을 만듦
-			td4.appendChild(document.createTextNode(arrtotal[i]+ "")); // 총금액 배열을 가져와서 내용을 추가함
+			td4.appendChild(document.createTextNode(arrquantity[i]+ "")); // 수량 배열을 가져와서 내용을 추가함
+			
+			let td5 = document.createElement("td");	// 테이블 열을 만듦
+			td5.appendChild(document.createTextNode(arrtotal[i]+ "")); // 총금액 배열을 가져와서 내용을 추가함
 			
 			tr.appendChild(td1); // 열1 을 기준 행에다 붙임
 			tr.appendChild(td2); // 열2 을 기준 행에다 붙임
 			tr.appendChild(td3); // 열3 을 기준 행에다 붙임
 			tr.appendChild(td4); // 열4 을 기준 행에다 붙임 
+			tr.appendChild(td5); // 열5 을 기준 행에다 붙임 
 			
 			table.appendChild(tr); // 기준 행을 테이블에다 붙임
 		}
