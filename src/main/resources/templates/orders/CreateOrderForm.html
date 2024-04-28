@@ -17,13 +17,13 @@
         </p>
 
         <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total()"/></p>
-        <p>총금액  <span id="price" name="price"> 원</span></p>  
+        <p>총금액  <span id="price" name="price"> </span> 원</p>  
         <div style="line-height:60%;">
             <br>
             <br>
         </div>
         <div class="button-box">
-            <button type="submit">등록</button>
+            <button type="submit"  onclick=" checkBeforeSubmit()">등록</button>
         </div>
     </form>
 
@@ -93,8 +93,40 @@
             const salePrice = document.getElementById('salePrice').innerHTML;
             const quantity = document.getElementById('quantity').value;
 
-            document.getElementById('price').innerHTML = (salePrice * quantity);
+            document.getElementById('price').innerHTML = (salePrice *quantity);
+        } 
+
+        //null 값 제외 조건
+        function checkNull(){
+            const quantity = document.getElementById('quantity').value;
+            if(quantity == "") {
+                alert('필수 값을 입력하십시오');
+                return false;
+            }
+            return true;
+       }
+
+        // 수량 조건 (onClick)
+        function checkQuantity(){
+            const quantity = document.getElementById('quantity').value;
+            const stock = document.getElementById('stock').innerHTML;
+            
+            if(stock < quantity) {
+                alert('재고수량을 초과하였습니다.');
+                return false;
+            }
+            return true;
         }
+
+        // 버튼 클릭 전 체크
+        function checkBeforeSubmit() {
+            if (checkNull()) {
+                if (checkQuantity()) {
+                    document.Createorder.submit();
+                }
+            }
+        }
+
 
         // json 형식으로 데이터가져오기 //
         var messages = "[[${orders}]]";

@@ -20,4 +20,11 @@
         from items
     </select>
 
+    <update id="updateStock" keyProperty="itemId">
+        update items 
+          set stock = stock - #{quantity}
+        where item_id = #{itemId}
+          and stock - #{quantity} >= 0
+    </update>    
+
 </mapper>
