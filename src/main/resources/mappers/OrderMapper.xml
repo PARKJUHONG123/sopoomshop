@@ -17,7 +17,7 @@
 
 
     <select id="findAll" resultType="Order">
-    select b.order_id, b.member_id, b.item_id, b.quantity, (b.quantity*a.price) as total
+    select b.order_id, b.member_id, b.item_id, b.quantity, (b.quantity*a.sale_price) as total
     from items a
         inner join orders b
         on a.item_id = b.item_id
