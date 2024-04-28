@@ -23,7 +23,7 @@
 		let arrorderName = new Array(); // 주문자 배열
 		let arrritemName = new Array(); // 상품명 배열
 		let arrquantity = new Array(); // 수량 배열
-		let arrprice = new Array(); // 총금액 배열
+		let arrtotal = new Array(); // 총금액 배열
 
 		let json = JSON.parse(jsonText); // JSON 형식으로 뽑아서 객체화
 
@@ -34,7 +34,7 @@
 			arrorderName[i] = json[i].orderName;
 			arrritemName[i] = json[i].itemName;
 			arrquantity[i] = json[i].quantity;
-			arrprice[i] = json[i].price;
+			arrtotal[i] = json[i].total;
 		}
 
 		// Javscript 로 HTML 속성 추가
@@ -50,15 +50,15 @@
 			td2.appendChild(document.createTextNode(arrritemName[i] + "")); // 상품명 배열을 가져와서 내용을 추가함
 			
 			let td3 = document.createElement("td");	// 테이블 열을 만듦
-			td4.appendChild(document.createTextNode(arrquantity[i]+ "")); // 수량 배열을 가져와서 내용을 추가함
+			td3.appendChild(document.createTextNode(arrquantity[i]+ "")); // 수량 배열을 가져와서 내용을 추가함
 			
 			let td4 = document.createElement("td");	// 테이블 열을 만듦
-			td4.appendChild(document.createTextNode(arrprice[i]+ "")); // 총금액 배열을 가져와서 내용을 추가함
+			td4.appendChild(document.createTextNode(arrtotal[i]+ "")); // 총금액 배열을 가져와서 내용을 추가함
 			
 			tr.appendChild(td1); // 열1 을 기준 행에다 붙임
 			tr.appendChild(td2); // 열2 을 기준 행에다 붙임
 			tr.appendChild(td3); // 열3 을 기준 행에다 붙임
-			tr.appendChild(td4); // 열3 을 기준 행에다 붙임 
+			tr.appendChild(td4); // 열4 을 기준 행에다 붙임 
 			
 			table.appendChild(tr); // 기준 행을 테이블에다 붙임
 		}
