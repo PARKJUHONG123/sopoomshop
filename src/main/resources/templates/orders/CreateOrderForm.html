@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="getItemSelectInfo()">
     <h1>주문등록</h1>
     <form action="/orders/create-order" method="post" name="Createorder">
-        <p>주문자  <input id="orderName" type="text" name="order-name" placeholder="주문자" ></p>
-        <p>상품명  <input id="itemName" type="text" name="item-name" placeholder="상품명" maxlength="10"></p>
-        <p>상품명1 </p>
+        <p>주문자 <select id="memberSelect" name="member"></select></p>
 
-        <select name="itemSelect" id="itemSelect">
-            
-        </select>
+        <p>상품명 <select id="itemSelect" name="item" onchange="getItemSelectInfo()"></select></p>
+        <p>상품정보  
+            <div>- 재고 : <span id="stock" name="stock"></span> 개</div>
+            <div>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</div>
+        </p>
 
         <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100"/></p>
         <p>가격  <input id="price" type="text" name="price" placeholder="총금액" ></p>  
@@ -31,13 +31,67 @@
 
 
     <script type="text/javascript">
-        // json 형식으로 데이터가져오기 //
-        var messages = "[[${items}]]";
-	    var jsonMessage = messages.replace(/&quot;/g, "\""); // 서버랑 웹페이지랑 JSON 양식이 달라서 맞춰줌
 
-        addSelectRow("#itemSelect", "쓰레기", "1");
-        addSelectRow("#itemSelect", "사과", "2");
-        addSelectRow("#itemSelect", "뽀뽀", "3");
+        addItemSelect("[[${items}]]");
+        addMemberSelect("[[${members}]]");
+
+        // 드롭박스 (item)
+        function addItemSelect(message) {
+            var jsonMessage = message.replace(/&quot;/g, "\""); // 서버랑 웹페이지랑 JSON 양식이 달라서 맞춰줌
+            let json = JSON.parse(jsonMessage);     // json 데이터 object화 
+            for (i=0; i< json.length; i++) {        // 모든 값 물러오기 
+                addItemSelectRow(json[i]);          // select 추가                
+            }                  
+        }
+
+        // 드롭박스 (member)
+        function addMemberSelect(message) {
+            var jsonMessage = message.replace(/&quot;/g, "\""); // 서버랑 웹페이지랑 JSON 양식이 달라서 맞춰줌
+            let json = JSON.parse(jsonMessage);     // json 데이터 object화 
+            for (i=0; i< json.length; i++) {        // 모든 값 물러오기 
+                addMemberSelectRow(json[i]);          // select 추가                
+            }                  
+        }
+
+        // 드롭박스 행 추가하기 (item)
+        function addItemSelectRow(jsonValue) {
+            let objSelect = document.querySelector("#itemSelect");
+            var objOption = document.createElement("option");
+
+            objOption.text = jsonValue.name;
+            objOption.value = jsonValue.itemId;
+            objOption.stock = jsonValue.stock;
+            objOption.buyPrice = jsonValue.buyPrice;
+            objOption.salePrice = jsonValue.salePrice;
+
+            objSelect.options.add(objOption);
+        }
+
+        // 드롭박스 행 추가하기 (member)
+        function addMemberSelectRow(jsonValue) {
+            let objSelect = document.querySelector("#memberSelect");
+            var objOption = document.createElement("option");
+
+            objOption.text = jsonValue.name;
+            objOption.value = jsonValue.memberId;
+            objOption.address = jsonValue.address;
+            objOption.phone = jsonValue.phone;
+
+            objSelect.options.add(objOption);
+        }
+
+        // select 에서 선택한 판매가 및 수량 표시 
+        function getItemSelectInfo() {
+            var objSelect = document.querySelector("#itemSelect");
+            var objOption = objSelect.options[objSelect.selectedIndex];
+            document.getElementById('stock').innerHTML = objOption.stock;
+            document.getElementById('salePrice').innerHTML = objOption.salePrice;
+        }
+
+
+        // json 형식으로 데이터가져오기 //
+        var messages = "[[${orders}]]";
+	    var jsonMessage = messages.replace(/&quot;/g, "\""); // 서버랑 웹페이지랑 JSON 양식이 달라서 맞춰줌
 
         jsonfunc(jsonMessage); // JSON 을 파싱해서 HTML 로 표현함
 
@@ -57,24 +111,9 @@
                 arrsalePrice[i] = json[i].salePrice;
                 arrstock[i] = json[i].stock;
             }
-           
-            // let select = document.getElementById('select')
-            
-            // for(i=0; i<arrname.length; i++){
-            //     let option = document.createElement("option"); 
-            //     let option1 = document.createElement("option");	
-            //     option1.appendChild(document.createTextNode(arrname[i] + "")); 
-            // }
+
         }
 
-        // 드롭박스 추가하기
-        function addSelectRow(selectName, optionText, optionValue) { // "#itemSelect", json[i].itemName, json[i].itemId
-            let objSelect = document.querySelector(selectName);
-            var objOption = document.createElement("option");
-            objOption.text = optionText;
-            objOption.value = optionValue;
-            objSelect.options.add(objOption);
-        }
 
 
         // json 형식으로 자료보내기 // 
