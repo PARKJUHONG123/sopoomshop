@@ -20,7 +20,7 @@
         from items
     </select>
 
-    <update id="updateStock" keyProperty="orderId">
+    <update id="updateStock" keyProperty="itemId">
         update items 
           set stock = stock - #{quantity}
         where item_id = #{itemId}
