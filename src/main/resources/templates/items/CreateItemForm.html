@@ -6,7 +6,7 @@
     <title>상품등록</title>
 </head>
 <body>
-    <h1>상품등록</h1>  <button id="button-box1" type="button" onclick="location.href='/main'">메인화면</button>
+    <h1>상품등록</h1>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
     <form action="/items/create-item" method="post" name="Createitem">
         <p>상품명   <input id="name"  type="text" name="name" placeholder="상품명" minlength="4" onchange="checkInputEmptyFunction(this)"></p>
         <p>매입가   <input id="buy" type="number" name="buyPrice" placeholder="매입가" min="100" maxlength="10" onchange="checkInputEmptyFunction(this)"></p>
