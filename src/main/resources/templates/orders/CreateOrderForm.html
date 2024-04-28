@@ -16,14 +16,14 @@
             <div>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</div>
         </p>
 
-        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total(); checkBeforeSubmit()"/></p>
+        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total()"/></p>
         <p>총금액  <span id="price" name="price"> </span> 원</p>  
         <div style="line-height:60%;">
             <br>
             <br>
         </div>
         <div class="button-box">
-            <button type="submit">등록</button>
+            <button type="submit"  onclick=" checkBeforeSubmit()">등록</button>
         </div>
     </form>
 
