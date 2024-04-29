@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head profile="http://www.w3.org/2005/10/profile"> 
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
+<link rel="stylesheet" href="/create.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품등록</title>
 </head>
 <body>
-    <h1>상품등록</h1>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <h2>상품등록</h2>  
+    <br>
+	<button class="btn-0" id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <br>
     <form action="/items/create-item" method="post" name="Createitem">
-        <p>상품명   <input id="name"  type="text" name="name" placeholder="상품명" minlength="4" onchange="checkInputEmptyFunction(this)"></p>
-        <p>매입가   <input id="buy" type="number" name="buyPrice" placeholder="매입가" min="100" maxlength="10" onchange="checkInputEmptyFunction(this)"></p>
-        <p>판매가   <input id="sale" type="number" name="salePrice" placeholder="판매가" onchange="checkInputEmptyFunction(this)"></p>
-        <p>재고수량 <input id="stock" type="number" name="stock" placeholder="재고" min=10 max="1000" maxlength="4" onchange="checkInputEmptyFunction(this)"></p>
+        <p>상품이름 <input id="name"  type="text" name="name" placeholder="상품명" minlength="4" onchange="checkInputEmptyFunction(this)"></p>
+        <p>매입가격 <input id="buy" type="number" name="buyPrice" placeholder="매입가" min="100" maxlength="10" onchange="checkInputEmptyFunction(this)"></p>
+        <p>판매가격 <input id="sale" type="number" name="salePrice" placeholder="판매가" onchange="checkInputEmptyFunction(this)"></p>
+        <p>재고수량 <input id="stock" type="number" name="stock" placeholder="재고" min=10 max="1000" maxlength="4" onchange="checkInputEmptyFunction(this)" style="width: 162px;"></p>
         <div style="line-height:50%;">
             <br>
             <br>
         </div>
         <div class="button-box">
-            <button type="button" value="submit" onclick="checkBeforeSubmit()">등록</button>
+            <button class="btn-1" type="button" value="submit" onclick="checkBeforeSubmit()">등록</button>
         </div>
     </form>
     

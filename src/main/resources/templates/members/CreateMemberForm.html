@@ -16,9 +16,9 @@
     <br>
  
     <form action="/members/create-member" method="post" name="Createmember">
-        <p>이름  <input id="name" type="text" name="name" placeholder="이름" minlength="6" ></p>
-        <p>주소  <input id="address" type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
-        <p>전화번호  <input id="phone" type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
+        <p><span class="span1">이름</span> <input id="name" type="text" name="name" placeholder="이름" minlength="6" ></p>
+        <p><span class="span1">주소</span> <input id="address" type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
+        <p><span>전화번호</span><input id="phone" type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
         <br>
         <button class="btn-1" type="button" value="submit" onclick="checkNull()"; >등록</button>
         <br>
