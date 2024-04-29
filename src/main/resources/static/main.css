@@ -1,6 +1,53 @@
-.test1{
-    width: 200px;
-  height: auto;
-  display: inline-block;
-  text-align: center; 
+h1 {
+  font-family: "Hi Melody", sans-serif;
+  font-size: 80px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center
+}
+
+.btn-0 {  font-family: "Hi Melody", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  font-style: normal;}
+
+
+.btn-0 {
+  margin-left: 10px;
+  margin-right: 10px;
+  --c: #1095c1; /* the color */
+  --s: .15em;
+  
+  line-height:1.1em;
+  padding-bottom: calc(2.1*var(--s));
+  background: 
+    conic-gradient(from 135deg at top,var(--c) 90deg,#0000 0) 
+      left 0 bottom var(--s)/calc(2*var(--s)) var(--s) repeat-x,
+    conic-gradient(from -45deg at bottom,var(--c) 90deg,#0000 0) 
+      left var(--s) bottom 0/calc(2*var(--s)) var(--s) repeat-x;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) 0/var(--_p,0%) padding-box no-repeat;
+  transition: .5s;
+}
+.btn-0:hover {
+  --_p: 100%;
+  color: var(--c);
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px 50px;
+  place-content: center;
+  align-items: end;
+}
+h3 {
+  font-family: system-ui, sans-serif;
+  font-size: 4rem;
+  margin:0 auto;
+  cursor: pointer;
+  padding: 0 .1em;
 }
