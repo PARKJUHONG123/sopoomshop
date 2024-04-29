@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/create.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <title>회원등록</title>
 </head>
 <body>
-    <h1>회원등록</h1> <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <h2>회원등록</h2> 
+    <br>
+	<button class="btn-0" id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <br>
+ 
     <form action="/members/create-member" method="post" name="Createmember">
         <p>이름  <input id="name" type="text" name="name" placeholder="이름" minlength="6" ></p>
         <p>주소  <input id="address" type="text" name="address" placeholder="주소" minlength="4" maxlength="10"></p>
         <p>전화번호  <input id="phone" type="text" name="phone" placeholder="000-0000-0000" minlength="13" maxlength="13" oninput="autoHyphen(this)"/></p>
-        
-        <div style="line-height:60%;">
-            <br>
-            <br>
-        </div>
-        <div class="button-box">
-            <button type="button" value="submit" onclick="checkNull()"; >등록</button>
-        </div>
+        <br>
+        <button class="btn-1" type="button" value="submit" onclick="checkNull()"; >등록</button>
+        <br>
     </form>
     
     <script>
@@ -60,7 +63,6 @@
           .then(data => console.log(data))
           .catch(error => console.log(error))
     });
-    </script>
-   
+    </script> 
 </body>
 </html>

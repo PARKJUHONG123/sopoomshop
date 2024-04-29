@@ -1,20 +1,22 @@
-h1 {
+h2 {
   font-family: "Hi Melody", sans-serif;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 400;
   font-style: normal;
-  text-align: center
+  text-align: center;
+  margin-bottom : 20px;
 }
 
+  
 .btn-0 {  font-family: "Hi Melody", sans-serif;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 400;
   font-style: normal;}
 
 
 .btn-0 {
-  margin-left: 10px;
-  margin-right: 10px;
+  float : right;
+  margin-right: 5%;
   --c: #1095c1; /* the color */
   --s: .15em;
   
@@ -35,19 +37,19 @@ h1 {
   color: var(--c);
 }
 
-body {
-  height: 100vh;
-  margin: 0;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 20px 50px;
-  place-content: center;
-  align-items: end;
+
+table {
+  width:70%;
+  margin-top: 40px; 
+  margin-left: auto;
+  margin-right: auto;
 }
-h3 {
-  font-family: system-ui, sans-serif;
-  font-size: 4rem;
-  margin:0 auto;
-  cursor: pointer;
-  padding: 0 .1em;
-}
+
+table, td, th {
+  border-collapse : collapse;
+  border : 1px solid black;
+  font-family: "Hi Melody", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+};

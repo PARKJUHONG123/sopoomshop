@@ -17,9 +17,11 @@
 
 
     <select id="findAll" resultType="OrderResultDto">
-    select c.order_id, a.name as membername, b.name as itemname, b.sale_price, c.quantity, (c.quantity*b.sale_price) as total
-    from members a, items b, orders c 
-    where a.member_id = c.member_id
-    and b.item_id = c.item_id 
+    select c.order_id, a.name as member_name, b.name as item_name, b.sale_price, c.quantity, (c.quantity * b.sale_price) as total
+    from orders c
+    left outer join members a
+      on c.member_id = a.member_id
+    left outer join items b
+      on c.item_id = b.item_id
     </select>
 </mapper>

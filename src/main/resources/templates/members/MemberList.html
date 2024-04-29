@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="list.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <title>회원조회</title>  
 </head>
-<h2> 등록한 회원</h2>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+<h2> 등록한 회원</h2>  
+<br>
+	<button class="btn-0" id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+<br>
 <table id="table" border="1" style="width: 40%"  cellpadding="5" rules="rows">
 <tr>
     <th>이름</th><th>주소</th><th>전화번호</th>
 </tr>
-</table>
+</table></div>
 <body>
+
+
 <script type="text/javascript">
 	var messages = "[[${members}]]";
 	var jsonMessage = messages.replace(/&quot;/g, "\""); // 서버랑 웹페이지랑 JSON 양식이 달라서 맞춰줌
