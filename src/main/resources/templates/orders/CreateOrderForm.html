@@ -10,25 +10,27 @@
     <title>주문등록</title>  
 </head>
 <body onload="getItemSelectInfo()">
-    <h1>주문등록</h1>  <button id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <h2>주문등록</h2>
+    <br>
+	<button class="btn-0" id="button-box1" type="button" onclick="location.href='/'">메인화면</button>
+    <br>
     <form action="/orders/create-order" method="post" name="Createorder">
-        <p>주문자 <select id="memberSelect" name="memberId"></select></p>
+        <p>주문자명 <select id="memberSelect" name="memberId"></select></p>
 
-        <p>상품명 <select id="itemSelect" name="itemId" onchange="getItemSelectInfo()"></select></p>
-        <p>상품정보  
-            <div>- 재고 : <span id="stock" name="stock"></span> 개</div>
-            <div>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</div>
-        </p>
+        <p>상품이름 <select id="itemSelect" name="itemId" onchange="getItemSelectInfo()"></select></p>
+        <div style="text-align: center;" class="div2"><span class="class1">상품정보
+            &nbsp;</span><br>
+            <p>- 재고 : <span id="stock" name="stock"></span> 개</p>
+            <p>- 판매가 : <span id="salePrice" name="salePrice"></span> 원</p>
+        </div>
 
-        <p>수량  <input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total()"/></p>
-        <p>총금액  <span id="price" name="price"> </span> 원</p>  
-        <div style="line-height:60%;">
-            <br>
-            <br>
-        </div>
-        <div class="button-box">
-            <button type="submit"  onclick=" checkBeforeSubmit()">등록</button>
-        </div>
+        <p><span class="span1">수량</span><input id="quantity" type="number" name="quantity" placeholder="수량" min="1" max="100" onchange="total()" style="  width: 169px;"/></p>
+        <p><span class="class1"id="price" name="price" style="text-align: center;">총 &nbsp;금액 : 원 </span></p>  
+
+        <br>
+            <button class="btn-1" type="submit" value="submit" onclick=" checkBeforeSubmit()">등록</button>
+        <br>
+        
     </form>
 
 
