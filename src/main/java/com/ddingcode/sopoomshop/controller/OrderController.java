@@ -35,8 +35,8 @@ public class OrderController {
     @PostMapping("/orders/create-order")
     public String create(OrderForm orderForm) {
 
-        Order order = Order.createItem(orderForm.getItemId(),
-                orderForm.getMemberId(),
+        Order order = Order.createItem(orderForm.getMemberId(),
+                orderForm.getItemId(),
                 orderForm.getQuantity());
         orderService.save(order);
         return "redirect:/orders";
